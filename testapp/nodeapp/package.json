@@ -1,0 +1,24 @@
+{
+  "name": "github-js-testing",
+  "version": "1.0.0",
+  "description": "A simple test project",
+  "main": "main.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BamBoozledMC/Testing-Github-pages-javascript.git"
+  },
+  "author": "BamBoozled",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BamBoozledMC/Testing-Github-pages-javascript/issues"
+  },
+  "homepage": "https://github.com/BamBoozledMC/Testing-Github-pages-javascript#readme",
+  "dependencies": {
+    "net-ping": "^1.2.3",
+    "nodemon": "^2.0.12",
+    "readline": "^1.3.0"
+  }
+}

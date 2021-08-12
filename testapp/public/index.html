@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script src="socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<h1>JS</h1>
+<div class="logcss" id="log">
+<h3 class="h3">Console</h3>
+</div>
+<script type="text/javascript">
+
+var socket = io.connect(window.location.host);
+var consoleDiv = document.getElementById('log');
+
+socket.on('log_message', function (msg) {
+  //check if div is scrolled to the bottom
+  var atBottom = isElementScrolledToBottom(consoleDiv);
+
+  $('#log').append($('<li>').text(msg));
+
+  //check if div is scrolled to the bottom
+  var atBottom = isElementScrolledToBottom(consoleDiv);
+
+  //if div was at the bottom, scroll to bottom again.
+  if(atBottom) {
+    scrollToBottom(consoleDiv);
+  }
+  console.log(consoleDiv);
+});
+
+//function to check if element is scrolled to the bottom
+function isElementScrolledToBottom(el) {
+  if (el.scrollTop >= (el.scrollHeight - el.offsetHeight)) {
+      return true;
+  }
+  return false;
+}
+
+//function to scroll to bottom
+function scrollToBottom(el) {
+  el.scrollTop = el.scrollHeight;
+}
+
+function First() {
+  socket.emit('FirstFunction');
+}
+function Second() {
+  socket.emit('SecondFunction');
+}
+
+</script>
+<button onclick="First()">First Function</button>
+<button onclick="Second()">Second Function</button>
+</body>
+</html>

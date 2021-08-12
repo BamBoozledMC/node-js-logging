@@ -1,0 +1,23 @@
+.logcss {
+  background-color: #300A24;
+  color: white;
+  padding: 10px;
+  width: 70%;
+  height: 200px;
+  overflow: auto;
+  border-radius: 20px;
+  border-style: inset;
+  border-color: gray;
+  border-width: 6px;
+}
+
+.h3 {
+  color: white;
+  font-family: Calibri;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 25px;
+  background-color: black;
+  margin: calc(var(--padding) * -1);
+  padding: 6px;
+}
