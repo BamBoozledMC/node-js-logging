@@ -1,48 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="nav.css">
+  <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet'>
+  <script src="socket.io/socket.io.js"></script>
 </head>
 <body>
-<script src="socket.io/socket.io.js"></script>
-<h1>JS</h1>
-<div class="logcss" id="log">
-<h3 class="h3">Console</h3>
+  <div class="topnav">
+      <a class="active">Home</a>
+      <a href="/">FTP Client</a>
+      <a id="mytime">N/A</a>
+      <a id="time">N/A</a>
+    </div>
+<h1>Node JS HTML logger</h1>
+<center>
+  <div class="logoutercss">
+  <div class="logcss" id="log">
+  <h3 class="h3">Console</h3>
+  </div>
 </div>
+</center>
 <script type="text/javascript">
 
 var socket = io.connect(window.location.host);
-var consoleDiv = document.getElementById('log');
 
 socket.on('log_message', function (msg) {
-  //check if div is scrolled to the bottom
-  var atBottom = isElementScrolledToBottom(consoleDiv);
 
-  $('#log').append($('<li>').text(msg));
-
-  //check if div is scrolled to the bottom
-  var atBottom = isElementScrolledToBottom(consoleDiv);
-
-  //if div was at the bottom, scroll to bottom again.
-  if(atBottom) {
-    scrollToBottom(consoleDiv);
-  }
-  console.log(consoleDiv);
+  $('#log').append($('<logged>').text(msg + '\n'));
 });
-
-//function to check if element is scrolled to the bottom
-function isElementScrolledToBottom(el) {
-  if (el.scrollTop >= (el.scrollHeight - el.offsetHeight)) {
-      return true;
-  }
-  return false;
-}
-
-//function to scroll to bottom
-function scrollToBottom(el) {
-  el.scrollTop = el.scrollHeight;
-}
 
 function First() {
   socket.emit('FirstFunction');
@@ -52,9 +40,12 @@ function Second() {
 }
 
 </script>
+<button onclick="RestartApp()" type="button" class="btn btn-warning">Restart</button>
 <button onclick="First()">First Function</button>
 <button onclick="Second()">Second Function</button>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="time.js" type="text/javascript"></script>
+<script src="mytime.js" type="text/javascript"></script>
 </body>
 </html>

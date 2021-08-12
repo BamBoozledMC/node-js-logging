@@ -1,0 +1,48 @@
+.topnav {
+  margin: 5px;
+  overflow: hidden;
+  background-color: #333;
+  border-radius: 10px;
+}
+
+.topnav a, a:visited {
+  margin-left: 5px;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: Century Gothic;
+  transition: 0.3s;
+  border-radius: 10px;
+  border-style: groove;
+  border-color: #242424;
+  background-color: #242424;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+  border-radius: 10px;
+}
+
+.topnav a.active {
+  margin-left: 5px;
+  background-color: darkorange;
+  border-color: darkorange;
+  color: white;
+  border-radius: 10px;
+}
+.topnav a.active:hover {
+  cursor: not-allowed;
+  pointer-events: none !important;
+}
+
+#time, #mytime {
+float: right;
+pointer-events: none !important;
+color: white;
+padding: 5px;
+border: none;
+}

@@ -51,6 +51,10 @@ console.log = function (data) {
 io.on('connection', function (socket) {
   console.log('a user is connected');
 
+
+  socket.on('RestartApp', function () {
+    console.log('Restart command recieved.');
+  });
   socket.on('FirstFunction', function () {
     console.log('first method of project');
   });
