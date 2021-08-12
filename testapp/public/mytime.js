@@ -2,14 +2,14 @@ setInterval(showTime, 1000);
   function showTime() {
     let time = new Date();
     let mytime = time.toLocaleString(undefined, { timezone: "Australia/Brisbane" })
-    let myhour = time.getHours();
-    let myhour2 = time.getHours();
-    let mymin = time.getMinutes();
-    let mysec = time.getSeconds();
-    let myday = time.getDay();
-    let mydates = time.getDate();
-    let mymonth = time.getMonth();
-    let myyear = time.getFullYear();
+    let myhour = mytime.getHours();
+    let myhour2 = mytime.getHours();
+    let mymin = mytime.getMinutes();
+    let mysec = mytime.getSeconds();
+    let myday = mytime.getDay();
+    let mydates = mytime.getDate();
+    let mymonth = mytime.getMonth();
+    let myyear = mytime.getFullYear();
 
     am_pm = " AM";
     if (myhour > 12) {
