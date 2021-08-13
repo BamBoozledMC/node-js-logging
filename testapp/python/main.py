@@ -12,7 +12,6 @@ from discord_slash.utils.manage_commands import create_permission
 from discord_slash.model import SlashCommandPermissionType
 from discord_slash.utils.manage_commands import create_option, create_choice
 
-
 bot = commands.Bot(command_prefix="r!")
 
 
@@ -58,7 +57,7 @@ async def unload(ctx, extention):
         client.unload_extension(f'cogs.{extention}')
         await ctx.send('Module unloaded')
 
-for filename in os.listdir('./python/cogs'):
+for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 

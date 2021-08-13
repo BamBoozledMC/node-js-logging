@@ -1,16 +1,16 @@
-console.log('hi')
-var {PythonShell} = require('python-shell');
+const {spawn} = require('child_process');
 
-let options = {
-  mode: 'text',
-  pythonOptions: ['-u'], // get print results in real-time
-  scriptPath: './python/',
-};
-
-PythonShell.run('main.py', options, function (err, results) {
-  if (err) throw err;
-  console.log('results: %j', results);
-  console.log('finished');
+// spawn new child process to call the python script
+ const python = spawn('cmd.exe', ['/c', 'cd python & python -u main.py']);
+ // collect data from script
+ python.stdout.on('data', (data) => {
+  console.log(data.toString());
 });
-
-console.log('Hello World!');
+python.stderr.on('data', (data) => {
+  console.log(data);
+});
+ // in close event we are sure that stream from child process is closed
+ python.on('exit', (code, signal) => {
+  console.log(`Child exited with code ${code} and signal ${signal}`);
+});
+python.stdin.end();
