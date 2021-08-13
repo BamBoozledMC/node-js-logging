@@ -74,6 +74,11 @@ io.on('connection', function (socket) {
     requireUncached('../nodeapp/main.js');
     console.log('[ACTION] Restart complete.');
   });
+
+  socket.on('CheckConnection', function () {
+    console.log('[ACTION] Check Connection command recieved.');
+    console.log('[ACTION] Console connection state: Active.');
+  });
 });
 
 /* io.sockets.on("connect",function(socket){

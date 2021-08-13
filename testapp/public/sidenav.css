@@ -34,6 +34,10 @@
   display: block;
 }
 
+.actionsdiv button.smlrbtn {
+  font-size: 36px;
+}
+
 .outeractions {
   margin-right: 15px;
   background-color: rgba(16, 0, 135, 95%);

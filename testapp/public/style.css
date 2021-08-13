@@ -16,6 +16,7 @@ body {
   border-style: inset;
   border-color: gray;
   border-width: 6px;
+  position:relative;
 }
 
 .logcss {
@@ -26,10 +27,15 @@ body {
   overflow-y: scroll;
 }
 
+#log {
+  scroll-behavior: smooth;
+}
+
 h1 {
   font-family: Anton;
   margin: 10px;
   text-align: center;
+  font-size: 50px;
   color: orangered;
 }
 
@@ -48,4 +54,13 @@ logged {
   background-color: black;
   margin: calc(var(--padding) * -1);
   padding: 6px;
+}
+.logoverlay {
+  background-color: black;
+  border-radius: 20px;
+  padding: 5px;
+  position: absolute;
+  bottom: 10px;
+  right: 35px;
+  font-size: 20px;
 }
