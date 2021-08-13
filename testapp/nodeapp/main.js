@@ -7,10 +7,9 @@ const {spawn} = require('child_process');
   console.log(data.toString());
 });
 python.stderr.on('data', (data) => {
-  console.log(data);
+  console.log(data.toString());
 });
  // in close event we are sure that stream from child process is closed
  python.on('exit', (code, signal) => {
   console.log(`Child exited with code ${code} and signal ${signal}`);
 });
-python.stdin.end();

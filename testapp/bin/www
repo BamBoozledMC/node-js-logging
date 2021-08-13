@@ -37,9 +37,11 @@ function requireUncached(module) {
 var io = require('socket.io')(server);
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
+var loghistory = [];
 
 eventEmitter.on('logging', function (message) {
   io.emit('log_message', message);
+  loghistory.push(message)
 });
 
 var originConsoleLog = console.log;
@@ -49,18 +51,28 @@ console.log = function (data) {
 }
 
 io.on('connection', function (socket) {
+  let loghistorystr = loghistory.join("\n");
+  socket.emit('loghistory', loghistorystr);
 
+  socket.on('StartApp', function () {
+    console.log('[ACTION] Start command recieved.');
+    console.log('[ACTION] Starting...');
+    requireUncached('../nodeapp/main.js');
+    console.log('[ACTION] Start complete.');
+  });
+
+  socket.on('StopApp', function () {
+    console.log('[ACTION] Stop command recieved.');
+    console.log('[ACTION] Stopping...');
+    delete require.cache[require.resolve('../nodeapp/main.js')];
+    console.log('[ACTION] Stop complete.');
+  });
 
   socket.on('RestartApp', function () {
-    console.log('Restart command recieved.');
-  });
-  socket.on('FirstFunction', function () {
-    console.log('first method of project');
-  });
-  socket.on('SecondFunction', function () {
-    console.log('second method of project');
-    requireUncached('../nodeapp/main.js')
-
+    console.log('[ACTION] Restart command recieved.');
+    console.log('[ACTION] Restarting...');
+    requireUncached('../nodeapp/main.js');
+    console.log('[ACTION] Restart complete.');
   });
 });
 

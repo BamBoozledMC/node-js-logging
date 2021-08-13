@@ -7,9 +7,9 @@ body {
 }
 
 .logoutercss {
-  background-color: #300A24;
+  margin-left: 15px;
+  background-color: rgba(48,10,36, 95%);
   padding: 10px;
-  width: 80%;
   height: 80vh;
   text-align: left;
   border-radius: 20px;
@@ -44,7 +44,7 @@ logged {
   font-family: Calibri;
   border-radius: 20px;
   text-align: center;
-  font-size: 25px;
+  font-size: 30px;
   background-color: black;
   margin: calc(var(--padding) * -1);
   padding: 6px;

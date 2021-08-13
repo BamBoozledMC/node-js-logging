@@ -6,6 +6,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="sidenav.css">
   <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet'>
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
   <script src="socket.io/socket.io.js"></script>
@@ -18,39 +19,49 @@
       <a id="time">N/A</a>
     </div>
 <h1>Node JS HTML logger</h1>
-<div id="toaster" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="d-flex">
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-  </div>
-</div>
-<center>
+<div class="sidenav">
+  <div class="consolediv">
   <div class="logoutercss">
   <div class="logcss" id="log">
   <h3 class="h3">Console</h3>
   </div>
 </div>
-</center>
+</div>
+<div class="actionsdiv">
+  <div class="outeractions">
+  <div class="inneractions" >
+  <h3 class="h3">Actions</h3>
+  <button onclick="StartApp()" type="button" class="btn btn-success">Start</button><br />
+  <button onclick="StopApp()" type="button" class="btn btn-danger">Stop</button><br />
+  <button onclick="RestartApp()" type="button" class="btn btn-warning">Restart</button><br />
+  </div>
+  </div>
+</div>
+</div>
 <script type="text/javascript">
 
 var socket = io.connect(window.location.host);
+
+socket.on('loghistory', function (data) {
+  $('#log').append($('<logged>').text(data + '\n'));
+});
 
 socket.on('log_message', function (msg) {
 
   $('#log').append($('<logged>').text(msg + '\n'));
 });
 
-function First() {
-  socket.emit('FirstFunction');
+function StartApp() {
+  socket.emit('StartApp');
 }
-function Second() {
-  socket.emit('SecondFunction');
+function StopApp() {
+  socket.emit('StopApp');
+}
+function RestartApp() {
+  socket.emit('RestartApp');
 }
 
 </script>
-<button onclick="RestartApp()" type="button" class="btn btn-warning">Restart</button>
 <button onclick="First()">First Function</button>
 <button onclick="Second()">Second Function</button>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
