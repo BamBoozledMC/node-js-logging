@@ -49,7 +49,6 @@ console.log = function (data) {
 }
 
 io.on('connection', function (socket) {
-  console.log('a user is connected');
 
 
   socket.on('RestartApp', function () {
