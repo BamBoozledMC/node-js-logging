@@ -6,9 +6,20 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var auth = require('./auth')
+var basicAuth = require('express-basic-auth');
+var auth = require('./auth.json');
+const admin = auth.a
+const adminpass = auth.b
+const loudpass = auth.d
+const loud = auth.c
 var app = express();
-app.use(auth)
+app.use(basicAuth({
+    users: {
+      admin: adminpass,
+      loud: loudpass,
+    },
+    challenge: true,
+}))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

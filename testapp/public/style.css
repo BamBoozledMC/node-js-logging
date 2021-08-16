@@ -45,6 +45,13 @@ h1 {
   color: darkorange;
 }
 
+.subheader2 {
+  font-family: Verdana;
+  margin: 10px;
+  text-align: center;
+  color: black;
+}
+
 logged {
   color: white;
   font-family: Consolas;
