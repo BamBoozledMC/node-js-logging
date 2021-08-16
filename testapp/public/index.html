@@ -41,6 +41,7 @@
   <button onclick="StopApp()" type="button" class="btn btn-danger">Stop</button><br />
   <button onclick="RestartApp()" type="button" class="btn btn-warning">Restart</button><br />
   <button onclick="CheckConnection()" type="button" class="btn btn-info smlrbtn">Check Connection</button><br />
+  <button onclick="ClearConsole()" type="button" class="btn btn-dark smlrbtn">Clear Console</button><br />
   </div>
   </div>
 </div>
@@ -69,6 +70,10 @@ function RestartApp() {
 }
 function CheckConnection() {
   socket.emit('CheckConnection');
+}
+function ClearConsole() {
+  socket.emit('ClearConsole');
+  window.location.reload();
 }
 
 </script>

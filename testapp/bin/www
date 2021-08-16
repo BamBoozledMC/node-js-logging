@@ -38,6 +38,10 @@ var io = require('socket.io')(server);
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
 var loghistory = [];
+function ClearLogs() {
+  loghistory = [];
+}
+
 
 eventEmitter.on('logging', function (message) {
   io.emit('log_message', message);
@@ -78,6 +82,12 @@ io.on('connection', function (socket) {
   socket.on('CheckConnection', function () {
     console.log('[ACTION] Check Connection command recieved.');
     console.log('[ACTION] Console connection state: Active.');
+  });
+
+  socket.on('ClearConsole', function () {
+    console.log('[ACTION] Clear Console command recieved.');
+    ClearLogs();
+    console.log('[ACTION] Console Cleared.');
   });
 });
 
