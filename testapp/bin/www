@@ -33,7 +33,7 @@ function requireUncached(module) {
     delete require.cache[require.resolve(module)];
     return require(module);
 }
-
+requireUncached('../nodeapp/main.js')
 var io = require('socket.io')(server);
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
@@ -61,6 +61,7 @@ io.on('connection', function (socket) {
   socket.on('StartApp', function () {
     console.log('[ACTION] Start command recieved.');
     console.log('[ACTION] Starting...');
+	killpy()
     requireUncached('../nodeapp/main.js');
     console.log('[ACTION] Start complete.');
   });
@@ -68,6 +69,7 @@ io.on('connection', function (socket) {
   socket.on('StopApp', function () {
     console.log('[ACTION] Stop command recieved.');
     console.log('[ACTION] Stopping...');
+	killpy()
     delete require.cache[require.resolve('../nodeapp/main.js')];
     console.log('[ACTION] Stop complete.');
   });
@@ -75,6 +77,7 @@ io.on('connection', function (socket) {
   socket.on('RestartApp', function () {
     console.log('[ACTION] Restart command recieved.');
     console.log('[ACTION] Restarting...');
+	killpy()
     requireUncached('../nodeapp/main.js');
     console.log('[ACTION] Restart complete.');
   });
@@ -160,4 +163,4 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
-requireUncached('../nodeapp/main.js');
+

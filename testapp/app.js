@@ -11,12 +11,12 @@ var auth = require('./auth.json');
 const admin = auth.a
 const adminpass = auth.b
 const loudpass = auth.d
-const loud = auth.c
+const loudbook = auth.c
 var app = express();
 app.use(basicAuth({
     users: {
       admin: adminpass,
-      loud: loudpass,
+      loudbook: loudpass,
     },
     challenge: true,
 }))

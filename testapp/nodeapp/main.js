@@ -9,6 +9,10 @@ const {spawn} = require('child_process');
 python.stderr.on('data', (data) => {
   console.log(data.toString());
 });
+
+	global.killpy = function() {  
+		spawn("taskkill", ["/pid", python.pid, '/f', '/t']);
+	}
  // in close event we are sure that stream from child process is closed
  python.on('exit', (code, signal) => {
   console.log(`Child exited with code ${code} and signal ${signal}`);

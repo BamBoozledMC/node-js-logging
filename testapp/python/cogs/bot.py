@@ -7,7 +7,7 @@ client = commands.Bot(command_prefix = 'r!')
 client.remove_command('help')
 slash = SlashCommand(client, sync_commands=True, sync_on_cog_reload=True)
 noperms = 'You dont have permission to do this, if you think this is a mistake, contact Loudbook!'
-guild_ids = [702333016948736022, 874318705817968710, 860667007632277524]
+guild_ids = [702333016948736022, 874318705817968710]
 from discord_slash.utils.manage_commands import create_permission
 from discord_slash.model import SlashCommandPermissionType
 from discord_slash.utils.manage_commands import create_option, create_choice
