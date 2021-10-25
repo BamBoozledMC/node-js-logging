@@ -36,6 +36,10 @@ class Jayden(commands.Cog):
             await message.channel.send('you know humans are not as smart as robots... right? if you dont then you need to get help.')
         elif 'Bad bot' in message.content:
             await message.channel.send('you know humans are not as smart as robots... right? if you dont then you need to get help.')
+        elif "<" in message.content:
+            await message.channel.send(">")
+        elif ">" in message.content:
+            await message.channel.send("<")
 """        
         elif 'I agree to the terms and conditions.' in message.content:
             member = message.author
